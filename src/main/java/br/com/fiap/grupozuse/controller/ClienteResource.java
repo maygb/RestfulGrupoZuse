@@ -3,6 +3,7 @@ package br.com.fiap.grupozuse.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,27 +34,18 @@ public class ClienteResource {
 		return cadastroRepository.findAll();
 	}
 	
-	@GetMapping("cadastro/{telefone}")
-	public Cadastro buscarTelefoneCadastro(@PathVariable String telefone) {
-		Cadastro cadastro = cadastroRepository.findByTelefone(telefone);
-		
+	@GetMapping("cadastro/{cpf}")
+	public Cadastro buscarCpfCadastro(@PathVariable String cpf) {
+		Cadastro cadastro = cadastroRepository.findByCpf(cpf);
 		return cadastro;
 	}
 	
 	
-	@GetMapping("usuario/{telefone}")
-	public Usuario buscarTelefoneUsuario(@PathVariable String telefone) {
-		Usuario usuario = usuarioRepository.findByTelefone(telefone);
-
+	@GetMapping("usuario/{cpf}")
+	public Usuario buscarCpfUsuario(@PathVariable String cpf) {
+		Usuario usuario = usuarioRepository.findByCpf(cpf);
 		return usuario;
 	}
 		
-	@GetMapping("historico/{telefone}")
-	public List<HistoricoAcessos> buscarHistoricoAcessos(@PathVariable String telefone) {
-		Cadastro cadastro = cadastroRepository.findByTelefone(telefone);
-		List<HistoricoAcessos> listAcessos = historicoRepository.findByCadastro(cadastro);
-
-		return listAcessos;
-	}
 
 }

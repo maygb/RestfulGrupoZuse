@@ -6,5 +6,5 @@ import br.com.fiap.grupozuse.model.Cadastro;
 
 public interface CadastroRepository extends JpaRepository<Cadastro, Integer>{
 	
-	Cadastro findByTelefone(String telefone);
+	Cadastro findByCpf(String cpf);
 }

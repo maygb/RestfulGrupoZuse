@@ -6,6 +6,6 @@ import br.com.fiap.grupozuse.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	
-	Usuario findByTelefone(String telefone);
+	Usuario findByCpf(String cpf);
 
 }
